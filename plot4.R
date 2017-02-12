@@ -31,7 +31,7 @@ totals<-aggregate(Emissions ~ year,coaled,sum)
 
 g<-ggplot(aes(year,Emissions),data=totals,na.rm=true)
 
-labels<-labs(x='year',y='Emissions (tons)',title='PM2.5 Emissions across the US by year')
+labels<-labs(x='year',y='Emissions (tons)',title='PM2.5 Emissions across the US from Coal Combustion')
 thelegend<-scale_colour_discrete(name="legend",breaks=c(""))
 theplot<-g + geom_point(size=3,colour='red') + labels + geom_smooth(method='lm',fill=NA,lty=2,colour='red')
 

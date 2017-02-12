@@ -32,7 +32,8 @@ totals<-aggregate(Emissions ~ year,coaled,sum)
 g<-ggplot(aes(year,Emissions),data=totals,na.rm=true)
 
 labels<-labs(x='year',y='Emissions (tons)',title='PM2.5 Emissions across the US by year')
-g + geom_point(size=3,colour='red') + labels
+thelegend<-scale_colour_discrete(name="legend",breaks=c(""))
+print(g + geom_point(size=3,colour='red') + labels)
 ## add a line to this
 
 

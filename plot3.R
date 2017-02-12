@@ -19,7 +19,7 @@ g<-ggplot(aes(year,Emissions,colour=type),data=totals)
 # add labels
 labels<-labs(x='year',y='Emissions (tons)',title='PM2.5 Emissions in Baltimore by type')
 # draw with points, add fit lines, and set y axis limits
-g + geom_point(size=3) + stat_smooth(method='lm',lty=2)  +labels + ylim(0,2500)
+print(g + geom_point(size=3) + stat_smooth(method='lm',lty=2)  +labels + ylim(0,2500))
 
 
 

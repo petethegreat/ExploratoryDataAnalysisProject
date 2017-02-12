@@ -25,19 +25,24 @@ coalcodes<-SCC$SCC[coalLog]
 
 #totals<-NEI[NEI$SCC %in% coalcodes,] 
 ### Point plot
-# totals<-aggregate(Emissions ~ year,NEI[ NEI$SCC %in% coalcodes,],sum)
+coaled<-NEI[NEI$SCC %in% coalcodes,]
+
+totals<-aggregate(Emissions ~ year,coaled,sum)
 # g<-ggplot(aes(factor(year),Emissions),data=totals,na.rm=true)
-# g + geom_point(size=3,colour='red') 
+g<-ggplot(aes(year,Emissions),data=totals,na.rm=true)
+
+labels<-labs(x='year',y='Emissions (tons)',title='PM2.5 Emissions across the US by year')
+g + geom_point(size=3,colour='red') + labels
 ## add a line to this
 
 
 # boxplot
 # hard to see a trend
-coaled<-NEI[NEI$SCC %in% coalcodes,]
+# coaled<-NEI[NEI$SCC %in% coalcodes,]
 
-g<-ggplot(aes(factor(year),log10(Emissions)),data=coaled,na.rm=true)
+# g<-ggplot(aes(factor(year),log10(Emissions)),data=coaled,na.rm=true)
 
-g + geom_boxplot()
+# g + geom_boxplot()
 
 
 

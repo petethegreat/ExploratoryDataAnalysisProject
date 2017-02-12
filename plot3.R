@@ -18,8 +18,12 @@ totals<-aggregate(Emissions ~ year+type,NEI[ NEI$fips == 24510,],sum)
 g<-ggplot(aes(year,Emissions,colour=type),data=totals)
 # add labels
 labels<-labs(x='year',y='Emissions (tons)',title='PM2.5 Emissions in Baltimore by type')
+theplot<-g + geom_point(size=3) + stat_smooth(method='lm',lty=2,fill=NA)  +labels
 # draw with points, add fit lines, and set y axis limits
-print(g + geom_point(size=3) + stat_smooth(method='lm',lty=2)  +labels + ylim(0,2500))
+message('writing plot3.png')
+png('plot3.png')
+print( theplot)
+dev.off()
 
 
 

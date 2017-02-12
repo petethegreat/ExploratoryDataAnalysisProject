@@ -12,6 +12,8 @@ totals<-aggregate(Emissions ~ year,NEI,sum)
 
 # make a plot
 # annotate with title and axis labels
+message('writing plot1.png')
+png('plot1.png')
 with(totals,
     {
         plot(year,Emissions/1.0e6,ylab='PM 2.5 Emissions (millions of tons)',type='n')
@@ -24,5 +26,5 @@ with(totals,
 
     })
 
-
+dev.off()
 # add a gr devices or copy line to produce a png

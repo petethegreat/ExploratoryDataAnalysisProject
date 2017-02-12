@@ -8,12 +8,15 @@ SCC <- readRDS("Source_Classification_Code.rds")
 
 # sum up all emissions by year
 # (total emissions of all types from all measured locations)
+# select only baltimore data (rows where fips = 24510)
 
 totals<-aggregate(Emissions ~ year,NEI[ NEI$fips == 24510,],sum)
 
 
 # make a plot
 # annotate with title and axis labels
+message('writing plot2.png')
+png('plot2.png')
 with(totals,
     {
         plot(year,Emissions/1.0e6,ylab='PM 2.5 Emissions (millions of tons)',type='n')
@@ -26,3 +29,4 @@ with(totals,
         #title(xlab='year')
 
     })
+dev.off()

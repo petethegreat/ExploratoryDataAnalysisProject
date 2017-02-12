@@ -28,12 +28,17 @@ coalcodes<-SCC$SCC[coalLog]
 coaled<-NEI[NEI$SCC %in% coalcodes,]
 
 totals<-aggregate(Emissions ~ year,coaled,sum)
-# g<-ggplot(aes(factor(year),Emissions),data=totals,na.rm=true)
+
 g<-ggplot(aes(year,Emissions),data=totals,na.rm=true)
 
 labels<-labs(x='year',y='Emissions (tons)',title='PM2.5 Emissions across the US by year')
 thelegend<-scale_colour_discrete(name="legend",breaks=c(""))
-print(g + geom_point(size=3,colour='red') + labels)
+theplot<-g + geom_point(size=3,colour='red') + labels + geom_smooth(method='lm',fill=NA,lty=2,colour='red')
+
+message('writing plot4.png')
+png('plot4.png')
+print(theplot)
+dev.off()
 ## add a line to this
 
 
